@@ -121,7 +121,7 @@ class TACGenerator:
         elif isinstance(tree, FunctionCallNode):
             if tree.funcName == 'print':
                 for arg in tree.args:
-                    self.emit('PRINT', arg)
+                    self.emit('PRINT', arg.atr)
             else:
                 self.generate_func_call(tree)
         elif tree.nodeType == AST.RETURN:
@@ -268,7 +268,7 @@ class TACGenerator:
         self.emit('IFZ', tempFor, lEnd)
         self.generate(tree.consequent)
         tempVar = self.new_temp()
-        self.emit('+' if step.atr >=0 else '-', tree.loopVar.atr, abs(step.atr), tempVar)
+        self.emit('+' if step.atr >= 0 else '-', tree.loopVar.atr, abs(step.atr), tempVar)
         self.emit('ASSIGN', tempVar, None, tree.loopVar.atr)
         self.emit('GOTO', lStart)
         self.labelPresent = lEnd

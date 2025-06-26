@@ -76,7 +76,7 @@ class ExpressionNode(ASTNode):
 
         return result
 
-    def format_expr(self, level=0):
+    def format_expr(self):
         if self.left is None and self.right is None:
             return str(self.value)
 
@@ -298,7 +298,7 @@ class FunctionCallNode(ASTNode):
 
 
 class ForNode(ASTNode):
-    def __init__(self, loopVar: str, iterableExpr: List[int], consequent: ASTNode) -> None:
+    def __init__(self, loopVar: Token, iterableExpr: List[int], consequent: ASTNode) -> None:
         super().__init__(AST.FOR_LOOP)
         self.loopVar = loopVar
         self.iterableExpr = iterableExpr

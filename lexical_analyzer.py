@@ -69,7 +69,7 @@ class Token:
         colNo (int): The column number in the line where the token starts.
     """
 
-    def __init__(self, tokenType: TokenType, atr: str = None, lineNo: int = None, colNo: int = None) -> None:
+    def __init__(self, tokenType: TokenType, atr: str | float = None, lineNo: int = None, colNo: int = None) -> None:
         self.tokenType = tokenType
         self.atr = atr
         self.lineNo = lineNo
